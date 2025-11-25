@@ -1,5 +1,5 @@
 import 'package:fakestore/core/libraries/router.dart';
-import 'package:fakestore/features/domain/dio/dio.dart';
+import 'package:fakestore/core/dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 

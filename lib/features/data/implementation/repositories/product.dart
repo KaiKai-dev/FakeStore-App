@@ -1,5 +1,5 @@
 import 'package:fakestore/features/data/implementation/models/product.dart';
-import 'package:fakestore/features/domain/dio/dio.dart';
+import 'package:fakestore/core/dio/dio.dart';
 import 'package:fakestore/features/domain/repositories/product.dart';
 
 class ProductRepository implements ProductRepoBlueprint {
