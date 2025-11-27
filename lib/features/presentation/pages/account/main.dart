@@ -11,7 +11,7 @@ class _AccountPageState extends State<AccountPage> {
 
   @override
   void initState() {
-    context.read<AccountPageCubit>();
+    context.read<AccountPageCubit>().init();
     super.initState();
   }
 
@@ -21,6 +21,9 @@ class _AccountPageState extends State<AccountPage> {
       builder: (context, state) => switch(state) {
         AccountInitialState() || AccountLoadingState() => AccountLoadingPage(),
         AccountLoadedState(: var user) => AccountLoadedPage(user: user),
+        AccountNoUserState() => NoUserPage(),
+        SignupState() => SignupPage(),
+        LoginState() => LoginPage(),
         _ => throw UnimplementedError("Invalid Account Page State")
       }
     );

@@ -1,7 +1,13 @@
 library AccountPageLibrary;
 
+import 'dart:convert';
+import 'dart:developer';
+
 import 'package:equatable/equatable.dart';
+import 'package:fakestore/core/local_storages/cache.dart';
 import 'package:fakestore/features/data/implementation/models/user.dart';
+import 'package:fakestore/features/data/implementation/repositories/account.dart';
+import 'package:fakestore/features/presentation/pages/account/states/no_user.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -13,3 +19,7 @@ part '../../../features/data/bloc/account_cubit/state.dart';
 part '../../../features/presentation/pages/account/main.dart';
 part '../../../features/presentation/pages/account/states/loading.dart';
 part '../../../features/presentation/pages/account/states/loaded.dart';
+part '../../../features/presentation/pages/account/states/signup.dart';
+part '../../../features/presentation/pages/account/states/login.dart';
+
+

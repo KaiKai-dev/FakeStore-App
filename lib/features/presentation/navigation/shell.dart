@@ -14,6 +14,7 @@ class MainShell extends StatefulWidget {
 }
 
 class _MainShellState extends State<MainShell> {
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -26,6 +27,7 @@ class _MainShellState extends State<MainShell> {
       ),
       body: widget.child,
       bottomNavigationBar: BottomNavigationBar(
+        // currentIndex: RoutePage.values.indexWhere((pageName) => pageName.name == widget.routerState.name) + 1,
         items: RoutePage.values.map(
           (page) => BottomNavigationBarItem(
             icon: page.getIcon(),
@@ -34,7 +36,6 @@ class _MainShellState extends State<MainShell> {
         ).toList(),
         onTap:(value) => context.goNamed(RoutePage.values[value].name),
       ),
-
     );
   }
 }

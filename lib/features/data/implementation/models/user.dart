@@ -9,4 +9,10 @@ class User extends UserModel {
     super.age
   });
 
+  factory User.fromJson(Map<String, dynamic> data) => User(
+    id: data["id"], 
+    firstname: data["firstname"], 
+    lastname: data["lastname"]
+  );
+
 }
