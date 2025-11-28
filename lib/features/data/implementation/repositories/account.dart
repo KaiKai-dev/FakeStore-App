@@ -4,12 +4,14 @@ import 'dart:math';
 
 import 'package:fakestore/core/dio/dio.dart';
 import 'package:fakestore/core/local_storages/secure_cache.dart';
+import 'package:fakestore/features/data/implementation/models/user.models/user.model.dart';
 import 'package:fakestore/features/domain/blueprints/account.dart';
 
 class AccountRepository implements AccountRepoBlueprint {
 
-  Future<void> login(Map<String, dynamic> data) async {
-    // print(data);
+  Future<void> authLogin(Map<String, dynamic> data) async {
+
+    print(data);
     final response = await dio.post(
       "/auth/login",
       data: {
@@ -18,9 +20,12 @@ class AccountRepository implements AccountRepoBlueprint {
       },
     );
 
-    print(response.data);
+    print("TOKEN: ${response.data}");
 
-    // SecureCache.write("user", response.data);
+    await SecureCache.write("user", response.data['token']);
+
+    // await fetchUserById();
+
 
   }
 
@@ -46,6 +51,20 @@ class AccountRepository implements AccountRepoBlueprint {
     );
 
     dev.log("USERS: ${response.data}");
+  }
+
+  Future<User> fetchUser({
+    int id = 1
+  }) async{
+    final Map<String, dynamic> userData = ( await 
+      dio.get(
+      "/users/$id",
+      )
+    ).data;
+
+    print("USER DATA: ${userData}");
+
+    return User.fromJson(userData);
   }
 
   int randomizer() {

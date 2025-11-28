@@ -5,17 +5,21 @@ class AccountPageCubit extends Cubit<AccountPageState> {
 
 
   void init() async {
-    final userCache = NormalCache.getString("user");
-    if(userCache == null) {
-      emit(AccountNoUserState());
-      return;
-    }
-
-    emit( 
-      AccountLoadedState( user: User.fromJson(
-        jsonDecode(userCache)
-      ))
+    emit(
+      AccountLoadingState()
     );
+    
+    final token = await SecureCache.getString("user");
+
+    if( token == null ){
+      emit(
+        AccountNoUserState()
+      );
+    } else {
+      final  userData = await AccountRepository().fetchUser();
+
+      emit(AccountLoadedState(user: userData));
+    }
   }
 
   void goToLogin() {
@@ -32,14 +36,18 @@ class AccountPageCubit extends Cubit<AccountPageState> {
     } 
   } 
 
-  void submitForm(Map<String, dynamic> data) {
+  void submitForm(Map<String, dynamic> data) async {
     switch(state){
-      case SignupState(): AccountRepository().signup(data); break;
-      case LoginState(): AccountRepository().fetchUsers(); break;
+      case SignupState(): 
+        await AccountRepository().signup(data); 
+        break;
+      case LoginState(): 
+        await AccountRepository().authLogin(data); 
+        break;
       default: log("Invalid Form State"); return;
     };
 
-    // init();
+    init();
   } 
 
 

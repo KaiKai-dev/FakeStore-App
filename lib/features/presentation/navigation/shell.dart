@@ -26,15 +26,11 @@ class _MainShellState extends State<MainShell> {
         scrolledUnderElevation: 0,
       ),
       body: widget.child,
-      bottomNavigationBar: BottomNavigationBar(
-        // currentIndex: RoutePage.values.indexWhere((pageName) => pageName.name == widget.routerState.name) + 1,
-        items: RoutePage.values.map(
-          (page) => BottomNavigationBarItem(
-            icon: page.getIcon(),
-            label: page.name
-          )
-        ).toList(),
-        onTap:(value) => context.goNamed(RoutePage.values[value].name),
+      bottomNavigationBar: ShellBottomNavbar(
+        routerState: widget.routerState,
+        currentIndex: RoutePage.values.indexWhere(
+          (page) => page.name == widget.routerState.name
+        ) + 1,
       ),
     );
   }

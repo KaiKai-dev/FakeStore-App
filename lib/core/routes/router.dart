@@ -1,6 +1,9 @@
 part of RouterLibrary;
 
+final GlobalKey<NavigatorState> navigatorState = GlobalKey<NavigatorState>();
+
 final router = GoRouter(
+  navigatorKey: navigatorState,
   routes: [
     ShellRoute(
       builder: (context, state, child) => MainShell(

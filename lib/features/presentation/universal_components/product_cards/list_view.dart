@@ -1,5 +1,5 @@
 import 'package:cached_network_image/cached_network_image.dart';
-import 'package:fakestore/features/data/implementation/models/product.dart';
+import 'package:fakestore/features/data/implementation/models/product.model.dart';
 import 'package:flutter/material.dart';
 
 class ListViewProductCard extends StatelessWidget {

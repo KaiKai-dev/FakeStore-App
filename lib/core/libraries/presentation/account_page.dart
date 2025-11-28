@@ -5,8 +5,10 @@ import 'dart:developer';
 
 import 'package:equatable/equatable.dart';
 import 'package:fakestore/core/local_storages/cache.dart';
-import 'package:fakestore/features/data/implementation/models/user.dart';
+import 'package:fakestore/core/local_storages/secure_cache.dart';
+import 'package:fakestore/features/data/implementation/models/user.models/user.model.dart';
 import 'package:fakestore/features/data/implementation/repositories/account.dart';
+import 'package:fakestore/features/presentation/pages/account/components/user_contact_detail.dart';
 import 'package:fakestore/features/presentation/pages/account/states/no_user.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';

@@ -15,3 +15,4 @@ part '../routes/router.dart';
 
 // Presentation
 part '../../features/presentation/navigation/shell.dart';
+part '../../features/presentation/navigation/bottom_navbar.dart';
